@@ -1,0 +1,18 @@
+{
+  "id": "ddrayne-modue-bridge",
+  "name": "Modue Bridge (community)",
+  "description": "Registers modue.* gateway RPC relays so the Modue control surface can talk to OpenClaw agents.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": { "type": "boolean" }
+    }
+  },
+  "uiHints": {
+    "enabled": {
+      "label": "Modue Bridge (community)",
+      "help": "Register modue.* gateway RPC methods so the Modue control surface can connect."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@ddrayne/openclaw-modue-bridge",
+  "version": "0.1.0",
+  "description": "Community OpenClaw bridge that registers modue.* RPC relays so the Modue plugin can talk to OpenClaw agents.",
+  "main": "index.js",
+  "type": "module",
+  "openclaw": {
+    "plugin": {
+      "id": "ddrayne-modue-bridge"
+    },
+    "install": {
+      "npmSpec": "@ddrayne/openclaw-modue-bridge"
+    }
+  },
+  "peerDependencies": {
+    "openclaw": "*"
+  },
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "modue"
+  ],
+  "author": "ddrayne",
+  "license": "ISC"
+}
