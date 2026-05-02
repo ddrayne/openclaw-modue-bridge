@@ -4,6 +4,9 @@
   "description": "Community OpenClaw bridge that registers modue.* RPC relays so the Modue plugin can talk to OpenClaw agents.",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "test": "node --test 'test/**/*.test.js'"
+  },
   "openclaw": {
     "extensions": ["./index.js"],
     "plugin": {
@@ -19,8 +22,17 @@
   "keywords": [
     "openclaw",
     "openclaw-plugin",
-    "modue"
+    "modue",
+    "control-surface"
   ],
   "author": "ddrayne",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/ddrayne/openclaw-modue-bridge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddrayne/openclaw-modue-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ddrayne/openclaw-modue-bridge/issues"
+  }
 }
