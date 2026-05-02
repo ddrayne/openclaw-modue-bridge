@@ -1,7 +1,7 @@
 {
   "id": "ddrayne-modue-bridge",
   "name": "Modue Bridge (community)",
-  "description": "Registers modue.* gateway RPC relays so the Modue control surface can talk to OpenClaw agents.",
+  "description": "Bridges OpenClaw and the Modue control surface: modue.* RPC relays, modue.bridge.ping for device priming, and 4 LLM tools (modue_leds, modue_display, modue_slider, modue_keys).",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -12,7 +12,10 @@
   "uiHints": {
     "enabled": {
       "label": "Modue Bridge (community)",
-      "help": "Register modue.* gateway RPC methods so the Modue control surface can connect."
+      "help": "Register modue.* gateway methods, modue.bridge.ping, and the modue_* agent tools."
     }
+  },
+  "contracts": {
+    "tools": ["modue_leds", "modue_display", "modue_slider", "modue_keys"]
   }
 }

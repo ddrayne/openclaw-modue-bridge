@@ -1,31 +1,46 @@
 # OpenClaw ↔ Modue bridge (community)
 
-A small community [OpenClaw](https://openclaw.ai) plugin by @ddrayne that registers the `modue.*`
-gateway RPC namespace as broadcast relays, so the Modue platform plugin
-[`@modue/openclaw`](https://github.com/ddrayne/openclaw-modue) can talk to
-OpenClaw agents over the gateway WebSocket without patching OpenClaw core.
+A small community [OpenClaw](https://openclaw.ai) plugin by @ddrayne that
+bridges OpenClaw and the Modue hardware control surface — both as gateway
+RPC relays and as agent tools.
 
-## What it does
+Pairs with [`@modue/openclaw`](https://github.com/ddrayne/openclaw-modue)
+(the Modue-platform side) which renders agent state on the device and
+forwards device events back to the gateway.
 
-Registers 13 `modue.*` gateway methods:
+## What it registers
 
-- Agent → device: `modue.display.set`, `modue.display.raw`,
+### `modue.*` gateway methods (broadcast relays)
+
+Stateless relays — receive the call from one connected client, broadcast
+the same event name and params to every other client. Same handler shape
+in both directions.
+
+- **Agent → device**: `modue.display.set`, `modue.display.raw`,
   `modue.display.release`, `modue.slider.set`, `modue.leds.set`,
   `modue.leds.pattern`, `modue.leds.release`, `modue.key.labels`
-- Device → agents: `modue.slider.changed`, `modue.knob.changed`,
+- **Device → agents**: `modue.slider.changed`, `modue.knob.changed`,
   `modue.key.pressed`, `modue.display.touched`, `modue.capabilities`
 
-Each handler is a simple broadcast: receive the call from one connected
-client, forward the same event name and params to every other client.
+### `modue.bridge.ping` gateway method
+
+Compatibility shim for `@modue/openclaw`, which calls it on every
+(re)connect to "prime" the broadcast capture used by the agent tools.
+Scope: `operator.read`.
+
+### Agent tools (LLM-callable)
+
+- `modue_leds` — set LED patterns (`pulse`, `chase`, `breathe`, `flash`,
+  `solid`) or individual LED colors
+- `modue_display` — push title / body / image content to the device
+- `modue_slider` — set motorized fader position 0-100
+- `modue_keys` — set labels for the three physical keys
 
 ## Install
 
 ```sh
-openclaw plugin install @ddrayne/openclaw-modue-bridge
+openclaw plugins install @ddrayne/openclaw-modue-bridge
 ```
-
-Then make sure the Modue control surface side is set up via the
-`@modue/openclaw` Modue-platform plugin.
 
 ## License
 
