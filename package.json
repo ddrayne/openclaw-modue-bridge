@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "openclaw": {
+    "extensions": ["./index.js"],
     "plugin": {
       "id": "ddrayne-modue-bridge"
     },
